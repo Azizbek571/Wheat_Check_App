@@ -130,16 +130,16 @@ class _AddInfoState extends State<AddInfo> {
                 AddInfoPage(
                   hintText: "To'lov turi:",
                   child: Input(
-                      hintText: "To'lov turini kiriting", controller: controller.name),
+                      hintText: "To'lov turini kiriting", controller: controller.payment),
                 ),
                 AddInfoPage(
                   hintText: "Narxi:",
                   child:
-                      Input(hintText: "Narxini kiriting", controller: controller.name),
+                      Input(hintText: "Narxini kiriting", controller: controller.price),
                 ),
                 AddInfoPage(
                   hintText: "Jami:",
-                  child: Input(hintText: "", controller: controller.name),
+                  child: Input(hintText: "", controller: controller.sum),
                 ),
                 Row(
                   children: [
