@@ -1,18 +1,8 @@
-import 'dart:convert';
-
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:wheat_check/components/input.dart';
-import 'package:wheat_check/models/post.dart';
-import 'package:wheat_check/pages/addInfoPages.dart';
+import 'package:wheat_check/components/Custom_dropdown/custom_dropdown.dart';
 import 'package:wheat_check/pages/exports.dart';
-import 'package:http/http.dart' as http;
-import 'package:dio/dio.dart';
-import 'package:wheat_check/pages/stores/Add_Info_Controller.dart';
 
 class AddInfo extends StatefulWidget {
   const AddInfo({super.key});
-
   @override
   State<AddInfo> createState() => _AddInfoState();
 }
@@ -20,6 +10,9 @@ class AddInfo extends StatefulWidget {
 class _AddInfoState extends State<AddInfo> {
   AddInfoController controller = Get.put(AddInfoController());
   TextEditingController _dateController = TextEditingController();
+  TextEditingController paymentTypeC = TextEditingController();
+
+  List<String> _list = ['Naqd', 'Click', 'Bank orqali'];
 
   Future<void> _selectDate() async {
     DateTime? _picked = await showDatePicker(
@@ -69,7 +62,7 @@ class _AddInfoState extends State<AddInfo> {
                       children: [
                         TextField(
                           controller: _dateController,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                               labelText: 'Sana',
                               filled: true,
                               prefixIcon: Icon(Icons.calendar_today),
@@ -90,55 +83,108 @@ class _AddInfoState extends State<AddInfo> {
                           hintText: "O'rilgan maydonni kiriting",
                           controller: controller.hectare),
                     ),
-                    AddInfoPage(
-                      hintText: "To'lov turi:",
-                      child: Input(
-                          hintText: "To'lov turini kiriting",
-                          controller: controller.payment),
+                    PaymentType(
+                      hintText: "To'lov turi",
+                      child: CustomDropdown<String>(
+                        decoration: CustomDropdownDecoration(
+                            closedBorderRadius: BorderRadius.circular(5),
+                            closedBorder: Border.all(color: Colors.black),
+                            // closedFillColor: const Color.fromARGB(255, 117, 165, 247),
+                            expandedFillColor:
+                                const Color.fromARGB(255, 133, 197, 250)),
+                        hintText: 'To\'lov turini tanlang',
+                        items: _list,
+                        // initialItem: _list[0],
+                        onChanged: (value) {
+                          print('changing value to: $value');
+                        },
+                      ),
                     ),
+                    SizedBox(height: 10),
                     AddInfoPage(
                       hintText: "Narxi:",
                       child: Input(
                           hintText: "Narxini kiriting",
                           controller: controller.price),
                     ),
-                            SizedBox(height: 5),
-
+                    const SizedBox(height: 5),
                     Row(
                       children: [
                         Container(
                             height: 40,
                             width: 80,
-                            padding: EdgeInsets.all(10),
+                            padding: const EdgeInsets.all(10),
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15),
-                                color: Color.fromARGB(252, 123, 192, 249)),
-                            child: Text(
+                                color:
+                                    const Color.fromARGB(252, 123, 192, 249)),
+                            child: const Text(
                               "Jami:",
                               style: TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.w700),
                             )),
-                            SizedBox(width: 5),
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(7),
-                            color: const Color.fromARGB(255, 179, 218, 250)),
-                            padding: EdgeInsets.all(10),
-                            height: 40,
-                            width: 200,
-                            child: Text("500.000.000",  style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.w700),)),
-                            SizedBox(width: 5),
-
-                        Text("So'm",  style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.w700),)
+                        const SizedBox(width: 10),
+                        Column(
+                          children: [
+                            Row(
+                              children: [
+                                Container(
+                                    decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.black),
+                                        borderRadius: BorderRadius.circular(7),
+                                        ),
+                                    padding: const EdgeInsets.all(10),
+                                    height: 50,
+                                    width: 200,
+                                    child: const Text(
+                                      "500.000.000",
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w700),
+                                    )),
+                                const SizedBox(width: 5),
+                                const Text(
+                                  "So'm",
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w700),
+                                )
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Container(
+                                  
+                                    decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.black),
+                                        borderRadius: BorderRadius.circular(7),
+                                        ),
+                                    padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                                    height: 50,
+                                    width: 100,
+                                    child: const Text(
+                                      "120",
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w700),
+                                    )),
+                                const SizedBox(width: 5),
+                                const Text(
+                                  "litr",
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w700),
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
                       ],
                     ),
-                            SizedBox(height:10),
-
+                    const SizedBox(height: 10),
                     Row(
                       children: [
-                        const SizedBox(width: 60),
+                        const SizedBox(width: 40),
                         InkWell(
                           onTap: () {
                             Get.back();

@@ -36,7 +36,7 @@ class _AllAreaState extends State<AllArea> {
                     children: [
                       Input(
                           hintText: "hintText",
-                          controller: controller.fetchInfo())
+                          controller: controller.area)
                     ]),
               ),
             )));

@@ -19,6 +19,10 @@ class AddInfoController extends GetxController {
 
   var myDio = MyDio().dio();
 
+  List<String> names=[
+
+  ];
+
 fetchInfo()async{
   try{
     loading=true;
@@ -35,13 +39,15 @@ fetchInfo()async{
 
 
  bool validate() {
-    return name.text.trim().isEmpty ||  area.text.trim().isEmpty;
+   
+    return name.text.isEmpty || area.text.isEmpty;
         // date.text.trim().isEmpty ||
         // hectare.text.trim().isEmpty ||
         // payment.text.trim().isEmpty ||
         // price.text.trim().isEmpty ||
         // fuel.text.trim().isEmpty;
   }
+
   void addinfo() async {
     if(loading) return;
     loading =true;
