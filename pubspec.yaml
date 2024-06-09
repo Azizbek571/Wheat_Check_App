@@ -38,7 +38,7 @@ dependencies:
   get: ^4.6.6
   flutter_dotenv: ^5.1.0
   dio: ^5.4.3+1
-  
+  scroll_date_picker: ^3.8.0
   get_storage: ^2.1.1
   http: ^1.2.1
 

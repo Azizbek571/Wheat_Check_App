@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:wheat_check/pages/Dashboard/All_Area.dart';
+import 'package:wheat_check/pages/History.dart';
 import 'package:wheat_check/pages/add_info.dart';
 import 'package:wheat_check/pages/exports.dart';
+import 'package:wheat_check/pages/stores/Add_Info_Controller.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -11,6 +14,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  AddInfoController controller = Get.put(AddInfoController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,7 +71,10 @@ class _HomePageState extends State<HomePage> {
                     child: Ink(
                       child: InkWell(
                         borderRadius: BorderRadius.circular(16),
-                        onTap: () {},
+                        onTap: () {
+                          Get.to(()=> const AllArea());
+                          controller.fetchInfo();
+                        },
                         child: Container(
                           height: 60,
                           width: 300,
@@ -99,7 +106,9 @@ class _HomePageState extends State<HomePage> {
                     child: Ink(
                       child: InkWell(
                         borderRadius: BorderRadius.circular(16),
-                        onTap: () {},
+                        onTap: () {
+                            Get.to(()=> const HistoryPage());
+                        },
                         child: Container(
                           height: 60,
                           width: 300,
