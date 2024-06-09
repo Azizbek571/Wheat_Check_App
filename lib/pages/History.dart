@@ -16,96 +16,97 @@ class _HistoryPageState extends State<HistoryPage> {
     return GetBuilder<AddInfoController>(builder: (controller) {
        return Scaffold(
         appBar: AppBar(title: Text('table'),),
-        body: Table(),
-      );
+        body: SingleChildScrollView(
+          child:
+          controller.loading ? Center(child: CircularProgressIndicator()):
+           Column(
+            children:  List.generate(controller.names.length, (index){
+              var item = controller.names[index];
+         return 
+          Card(
+      child: DataTable(
+        columns: [
+          DataColumn(
+            label: Text('#'),
+          ),
+          DataColumn(
+            label: Text('F/X ID'),
+          ),
+          DataColumn(
+            label: Text('F/X nomi'),
+          ),
+          DataColumn(
+            label: Text('Hudud'),
+          ),
+          DataColumn(
+            label: Text('Sana'),
+          ),
+          DataColumn(
+            label: Text('O\'rilgan maydon(gr)'),
+          ),
+          DataColumn(
+            label: Text('To\'lov turi'),
+          ),
+          DataColumn(
+            label: Text('Narx'),
+          ),
+          DataColumn(
+            label: Text('Jami summa'),
+          ),
+          DataColumn(
+            label: Text('Jami litr'),
+          ),
+        ],
+        rows: [
+          DataRow(
+            cells: [
+              DataCell(
+                Text("1"),
+              ),
+              DataCell(
+                Text("555599949"),
+              ),
+              DataCell(
+                Text('fermer_hojalik_nomi'),
+              ),
+              DataCell(
+                Text("Asaka"),
+              ),
+              DataCell(
+                Text("20.05.2024"),
+              ),
+              DataCell(
+                Text("10"),
+              ),
+              DataCell(
+                Text("Click"),
+              ),
+              DataCell(
+                Text("1.000.000"),
+              ),
+              DataCell(
+                Text("605.000.000"),
+              ),
+              DataCell(
+                Text("200"),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+            }
+            )
+          ),
+        ),
+             );
     },
      
     );
   }
 }
 
-class Table extends StatelessWidget {
-  const Table({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Card(
-        child: DataTable(
-          columns: [
-            DataColumn(
-              label: Text('#'),
-            ),
-            DataColumn(
-              label: Text('F/X ID'),
-            ),
-            DataColumn(
-              label: Text('F/X nomi'),
-            ),
-            DataColumn(
-              label: Text('Hudud'),
-            ),
-            DataColumn(
-              label: Text('Sana'),
-            ),
-            DataColumn(
-              label: Text('O\'rilgan maydon(gr)'),
-            ),
-            DataColumn(
-              label: Text('To\'lov turi'),
-            ),
-            DataColumn(
-              label: Text('Narx'),
-            ),
-            DataColumn(
-              label: Text('Jami summa'),
-            ),
-            DataColumn(
-              label: Text('Jami litr'),
-            ),
-          ],
-          rows: [
-            DataRow(
-              cells: [
-                DataCell(
-                  Text("1"),
-                ),
-                DataCell(
-                  Text("555599949"),
-                ),
-                DataCell(
-                  Text(controller.name),
-                ),
-                DataCell(
-                  Text("Asaka"),
-                ),
-                DataCell(
-                  Text("20.05.2024"),
-                ),
-                DataCell(
-                  Text("10"),
-                ),
-                DataCell(
-                  Text("Click"),
-                ),
-                DataCell(
-                  Text("1.000.000"),
-                ),
-                DataCell(
-                  Text("605.000.000"),
-                ),
-                DataCell(
-                  Text("200"),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
 
 
 

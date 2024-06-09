@@ -8,27 +8,27 @@ class AddInfoController extends GetxController {
   TextEditingController name = TextEditingController();
   TextEditingController area = TextEditingController();
   TextEditingController date = TextEditingController();
-  TextEditingController hectare = TextEditingController();
+  // TextEditingController hectare = TextEditingController();
   TextEditingController payment = TextEditingController();
   TextEditingController price = TextEditingController();
-  TextEditingController sum = TextEditingController();
-  TextEditingController fuel = TextEditingController();
+  // TextEditingController sum = TextEditingController();
+  // TextEditingController fuel = TextEditingController();
 
   bool loading = false;
   
 
   var myDio = MyDio().dio();
 
-  List<String> names=[
-
-  ];
+  List names = [];
 
 fetchInfo()async{
   try{
     loading=true;
     update();
+    await Future.delayed(Duration(seconds: 3));
     var res = await myDio.get('https://mastercode.uz/api/all-data');
-    area = res.data;
+    // print(res);
+    names = res.data;
   }catch(err){
     print(err);
   }finally{
@@ -40,12 +40,11 @@ fetchInfo()async{
 
  bool validate() {
    
-    return name.text.isEmpty || area.text.isEmpty;
-        // date.text.trim().isEmpty ||
-        // hectare.text.trim().isEmpty ||
-        // payment.text.trim().isEmpty ||
-        // price.text.trim().isEmpty ||
-        // fuel.text.trim().isEmpty;
+    return name.text.isEmpty || 
+        area.text.trim().isEmpty ||
+        date.text.trim().isEmpty ||
+        payment.text.trim().isEmpty ||
+        price.text.trim().isEmpty;
   }
 
   void addinfo() async {
@@ -58,27 +57,18 @@ fetchInfo()async{
       loading = false;
       return;
     }
-  
-    if (area.text.trim() != date.text.trim()) {
-      Get.snackbar("Error", "Ma'lumotlarni to'liq kiriting",
-          backgroundColor: Colors.red, colorText: Colors.white);
-      await Future.delayed(Duration(seconds: 3));
-      loading = false;
-      return;
-    }
     try {
       loading = true;
-      // update();
+      update();
       var res = await myDio.post('https://mastercode.uz/api/send-data', data: {
         'fermer_hojalik_nomi': name.text.trim(),
         'area': area.text.trim(),
         'date': date.text.trim(),
         'payment_type': payment.text.trim(),
         'price': price.text.trim(),
-        'summ':sum.text.trim(),
-        'fuel': fuel.text.trim()
       });
-      Get.snackbar("Success", "Ma'lumot qo'shildi");
+      Get.snackbar("Success!", "Ma'lumot qo'shildi",
+      backgroundColor: Colors.blueAccent, colorText: Colors.white);
       print(res);
       
     } catch (err) {

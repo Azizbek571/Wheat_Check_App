@@ -22,7 +22,7 @@ class _AddInfoState extends State<AddInfo> {
         lastDate: DateTime(2030));
     if (_picked != null) {
       setState(() {
-        _dateController.text = _picked.toString().split(" ")[0];
+        controller.date.text = _picked.toString().split(" ")[0];
       });
     }
   }
@@ -61,7 +61,7 @@ class _AddInfoState extends State<AddInfo> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         TextField(
-                          controller: _dateController,
+                          controller: controller.date,
                           decoration: const InputDecoration(
                               labelText: 'Sana',
                               filled: true,
@@ -77,12 +77,12 @@ class _AddInfoState extends State<AddInfo> {
                         ),
                       ],
                     ),
-                    AddInfoPage(
-                      hintText: "O'rilgan maydon(gr):",
-                      child: Input(
-                          hintText: "O'rilgan maydonni kiriting",
-                          controller: controller.hectare),
-                    ),
+                    // AddInfoPage(
+                    //   hintText: "O'rilgan maydon(gr):",
+                    //   child: Input(
+                    //       hintText: "O'rilgan maydonni kiriting",
+                    //       controller: controller.hectare),
+                    // ),
                     PaymentType(
                       hintText: "To'lov turi",
                       child: CustomDropdown<String>(
@@ -96,6 +96,7 @@ class _AddInfoState extends State<AddInfo> {
                         items: _list,
                         // initialItem: _list[0],
                         onChanged: (value) {
+                          controller.payment.text=value!;
                           print('changing value to: $value');
                         },
                       ),
