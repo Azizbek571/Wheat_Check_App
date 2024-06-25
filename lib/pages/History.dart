@@ -15,88 +15,98 @@ class _HistoryPageState extends State<HistoryPage> {
   Widget build(BuildContext context) {
     return GetBuilder<AddInfoController>(builder: (controller) {
        return Scaffold(
-        appBar: AppBar(title: Text('table'),),
-        body: SingleChildScrollView(
+        appBar: AppBar(title: Text('Table'),),
+        body: SingleChildScrollView
+        (scrollDirection: Axis.vertical,
           child:
-          controller.loading ? Center(child: CircularProgressIndicator()):
-           Column(
-            children:  List.generate(controller.names.length, (index){
-              var item = controller.names[index];
-         return 
-          Card(
-      child: DataTable(
-        columns: [
-          DataColumn(
-            label: Text('#'),
-          ),
-          DataColumn(
-            label: Text('F/X ID'),
-          ),
-          DataColumn(
-            label: Text('F/X nomi'),
-          ),
-          DataColumn(
-            label: Text('Hudud'),
-          ),
-          DataColumn(
-            label: Text('Sana'),
-          ),
-          DataColumn(
-            label: Text('O\'rilgan maydon(gr)'),
-          ),
-          DataColumn(
-            label: Text('To\'lov turi'),
-          ),
-          DataColumn(
-            label: Text('Narx'),
-          ),
-          DataColumn(
-            label: Text('Jami summa'),
-          ),
-          DataColumn(
-            label: Text('Jami litr'),
-          ),
-        ],
-        rows: [
-          DataRow(
-            cells: [
-              DataCell(
-                Text("1"),
-              ),
-              DataCell(
-                Text("555599949"),
-              ),
-              DataCell(
-                Text('fermer_hojalik_nomi'),
-              ),
-              DataCell(
-                Text("Asaka"),
-              ),
-              DataCell(
-                Text("20.05.2024"),
-              ),
-              DataCell(
-                Text("10"),
-              ),
-              DataCell(
-                Text("Click"),
-              ),
-              DataCell(
-                Text("1.000.000"),
-              ),
-              DataCell(
-                Text("605.000.000"),
-              ),
-              DataCell(
-                Text("200"),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-            }
-            )
+          
+           SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child:
+            controller.loading ? Center(child: CircularProgressIndicator()):
+             Column(
+              
+              children:  List.generate(controller.names.length, (index){
+                var item = controller.names[index];
+                      return 
+                       Card(
+               
+                   child: DataTable(
+                    
+                     columns: [
+                       // DataColumn(
+                       //   label: Text('#'),
+                       // ),
+                      //  DataColumn(
+                      //    label: Text('F/X ID'),
+                      //  ),
+                       DataColumn(
+              label: Text('F/X nomi'),
+                       ),
+                       DataColumn(
+              label: Text('Hudud'),
+                       ),
+                       DataColumn(
+              label: Text('Sana'),
+                       ),
+                       DataColumn(
+              label: Text('O\'rilgan maydon(gr)'),
+                       ),
+                       DataColumn(
+              label: Text('To\'lov turi'),
+                       ),
+                       DataColumn(
+              label: Text('Narx'),
+                       ),
+                       DataColumn(
+              label: Text('Jami summa'),
+                       ),
+                       DataColumn(
+              label: Text('Jami litr'),
+                       ),
+                     ],
+                     rows: [
+                       DataRow(
+              cells: [
+                // DataCell(
+                //   Text("1"),
+                // ),
+                // DataCell(
+                //   Text(item['id']),
+                // ),
+                DataCell(
+                  Text(item['fermer_hojalik_nomi']),
+                  
+                ),
+                DataCell(
+                  Text(item['region']),
+                ),
+                DataCell(
+                  Text(item['date']),
+                ),
+                DataCell(
+                  Text(item['area']),
+                ),
+                DataCell(
+                  Text(item['payment_type']),
+                ),
+                DataCell(
+                  Text(item['price']),
+                ),
+                DataCell(
+                  Text(item['summ']),
+                ),
+                DataCell(
+                  Text(item['fuel']),
+                ),
+              ],
+                       ),
+                     ],
+                   ),
+                 );
+              }
+              )
+                       ),
           ),
         ),
              );

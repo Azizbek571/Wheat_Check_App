@@ -55,7 +55,7 @@ class _AddInfoState extends State<AddInfo> {
                       hintText: "Hudud:",
                       child: Input(
                           hintText: "Hududni kiriting",
-                          controller: controller.area),
+                          controller: controller.region),
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -77,12 +77,12 @@ class _AddInfoState extends State<AddInfo> {
                         ),
                       ],
                     ),
-                    // AddInfoPage(
-                    //   hintText: "O'rilgan maydon(gr):",
-                    //   child: Input(
-                    //       hintText: "O'rilgan maydonni kiriting",
-                    //       controller: controller.hectare),
-                    // ),
+                    AddInfoPage(
+                      hintText: "O'rilgan maydon(gr):",
+                      child: Input(
+                          hintText: "O'rilgan maydonni kiriting",
+                          controller: controller.area),
+                    ),
                     PaymentType(
                       hintText: "To'lov turi",
                       child: CustomDropdown<String>(
@@ -109,79 +109,79 @@ class _AddInfoState extends State<AddInfo> {
                           controller: controller.price),
                     ),
                     const SizedBox(height: 5),
-                    Row(
-                      children: [
-                        Container(
-                            height: 40,
-                            width: 80,
-                            padding: const EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(15),
-                                color:
-                                    const Color.fromARGB(252, 123, 192, 249)),
-                            child: const Text(
-                              "Jami:",
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.w700),
-                            )),
-                        const SizedBox(width: 10),
-                        Column(
-                          children: [
-                            Row(
-                              children: [
-                                Container(
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.black),
-                                        borderRadius: BorderRadius.circular(7),
-                                        ),
-                                    padding: const EdgeInsets.all(10),
-                                    height: 50,
-                                    width: 200,
-                                    child: const Text(
-                                      "500.000.000",
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w700),
-                                    )),
-                                const SizedBox(width: 5),
-                                const Text(
-                                  "So'm",
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w700),
-                                )
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Container(
+                    // Row(
+                    //   children: [
+                    //     Container(
+                    //         height: 40,
+                    //         width: 80,
+                    //         padding: const EdgeInsets.all(10),
+                    //         decoration: BoxDecoration(
+                    //             borderRadius: BorderRadius.circular(15),
+                    //             color:
+                    //                 const Color.fromARGB(252, 123, 192, 249)),
+                    //         child: const Text(
+                    //           "Jami:",
+                    //           style: TextStyle(
+                    //               fontSize: 18, fontWeight: FontWeight.w700),
+                    //         )),
+                    //     const SizedBox(width: 10),
+                    //     Column(
+                    //       children: [
+                    //         Row(
+                    //           children: [
+                    //             Container(
+                    //                 decoration: BoxDecoration(
+                    //                   border: Border.all(color: Colors.black),
+                    //                     borderRadius: BorderRadius.circular(7),
+                    //                     ),
+                    //                 padding: const EdgeInsets.all(10),
+                    //                 height: 50,
+                    //                 width: 200,
+                    //                 child: const Text(
+                    //                   "500.000.000",
+                    //                   style: TextStyle(
+                    //                       fontSize: 18,
+                    //                       fontWeight: FontWeight.w700),
+                    //                 )),
+                    //             const SizedBox(width: 5),
+                    //             const Text(
+                    //               "So'm",
+                    //               style: TextStyle(
+                    //                   fontSize: 18,
+                    //                   fontWeight: FontWeight.w700),
+                    //             )
+                    //           ],
+                    //         ),
+                    //         Row(
+                    //           children: [
+                    //             Container(
                                   
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.black),
-                                        borderRadius: BorderRadius.circular(7),
-                                        ),
-                                    padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                                    height: 50,
-                                    width: 100,
-                                    child: const Text(
-                                      "120",
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w700),
-                                    )),
-                                const SizedBox(width: 5),
-                                const Text(
-                                  "litr",
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w700),
-                                )
-                              ],
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+                    //                 decoration: BoxDecoration(
+                    //                   border: Border.all(color: Colors.black),
+                    //                     borderRadius: BorderRadius.circular(7),
+                    //                     ),
+                    //                 padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                    //                 height: 50,
+                    //                 width: 100,
+                    //                 child: const Text(
+                    //                   "120",
+                    //                   style: TextStyle(
+                    //                       fontSize: 18,
+                    //                       fontWeight: FontWeight.w700),
+                    //                 )),
+                    //             const SizedBox(width: 5),
+                    //             const Text(
+                    //               "litr",
+                    //               style: TextStyle(
+                    //                   fontSize: 18,
+                    //                   fontWeight: FontWeight.w700),
+                    //             )
+                    //           ],
+                    //         ),
+                    //       ],
+                    //     ),
+                    //   ],
+                    // ),
                     const SizedBox(height: 10),
                     Row(
                       children: [

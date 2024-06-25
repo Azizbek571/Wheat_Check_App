@@ -5,6 +5,7 @@ import 'package:wheat_check/pages/History.dart';
 import 'package:wheat_check/pages/add_info.dart';
 import 'package:wheat_check/pages/exports.dart';
 import 'package:wheat_check/pages/stores/Add_Info_Controller.dart';
+import 'package:wheat_check/pages/stores/dashboard_controller.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -15,6 +16,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   AddInfoController controller = Get.put(AddInfoController());
+  DashBoardController controller2 = Get.put(DashBoardController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,8 +75,10 @@ class _HomePageState extends State<HomePage> {
                         child: InkWell(
                           borderRadius: BorderRadius.circular(16),
                           onTap: () {
+                            controller2.fetchInfofield();
+                            
                             Get.to(()=> const AllArea());
-                            controller.fetchInfo();
+                            
                           },
                           child: Container(
                             height: 60,
