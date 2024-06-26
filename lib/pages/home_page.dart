@@ -76,6 +76,7 @@ class _HomePageState extends State<HomePage> {
                           borderRadius: BorderRadius.circular(16),
                           onTap: () {
                             controller2.fetchInfofield();
+                            controller2.fetchallSum();
                             
                             Get.to(()=> const AllArea());
                             

@@ -42,6 +42,12 @@ dependencies:
   get_storage: ^2.1.1
   http: ^1.2.1
   fl_chart: ^0.68.0
+  flutter_launcher_icons: ^0.13.1
+
+flutter_icons:
+  image_path: "assets/images/wheat.png"
+  android: true
+  ios: true
   
   # syncfusion_flutter_charts: ^26.1.35
  

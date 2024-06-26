@@ -1,15 +1,15 @@
 
 
-import 'dart:ffi';
+
 
 class AllfieldModel {
-  int? umumiy_maydon;
+  int jami;
 
-  AllfieldModel( {required this.umumiy_maydon});
+  AllfieldModel( {required this.jami});
 
 
   factory AllfieldModel.fromJson(Map<String, dynamic> json){
-    return AllfieldModel(umumiy_maydon: json['umumiy_maydon'] as int );
+    return AllfieldModel(jami: json['umumiy_maydon']  );
   }
   
    

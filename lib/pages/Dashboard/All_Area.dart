@@ -17,12 +17,10 @@ class AllArea extends StatefulWidget {
 class _AllAreaState extends State<AllArea> {
   AddInfoController controller = Get.put(AddInfoController());
   DashBoardController controller2 = Get.put(DashBoardController());
+  DashBoardController controller3 = Get.put(DashBoardController());
 
 
-  @override
-  void setState(VoidCallback fn) {
-    super.setState(fn);
-  }
+      
   // Future<Post> fetchData() async{
   // final uri = Uri.parse("https://mastercode.uz/api/all-field");
   // final response = await http.get(uri);
@@ -73,16 +71,14 @@ class _AllAreaState extends State<AllArea> {
                             const Text("Jami o'rilgan maydon:", 
                             style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
                             ),
+
+                            controller2.maydon==null?Text('0'):
                             Row(
                               children: [
                                 const SizedBox(width: 30),
-                                Container(
-                                  child:
-                                   Text(controller2.umumiy_maydon.toString(),
-  
-                                  style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w700),
-                                  ),
-                                ),
+                                Text(controller2.maydon!.jami.toString(),
+                                                                  style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w700),
+                                                                  ),
                                 const SizedBox(width: 15),
                                 const Text("gektar",
                                  style: TextStyle(fontSize: 17, fontWeight: FontWeight.w700),),
@@ -143,17 +139,25 @@ class _AllAreaState extends State<AllArea> {
                           borderRadius: BorderRadius.circular(12)),
                         height: 100,
                         width: 300,
-                        child: const Column(
+                        child:  Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             
                             Text("Umumiy to'lov summasi:", 
                             style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
                             ),
+
+
+
+
+                            controller3.sum==null?Text('0'):
+
                             Row(
                               children: [
                                 SizedBox(width: 30),
-                                Text("520.000.000",
+                                Text(
+                                  controller3.sum!.jami2.toString(),
+
                                  style: TextStyle(fontSize: 17, fontWeight: FontWeight.w700),),
                                 SizedBox(width: 15),
                                 Text("so'm",
